@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">AlertTheft</string>
+    <string name="enterPassword"> enter password</string>
+    <string name="ReEnterPassword">Re enter password</string>
+    <string name="cancle">cancle</string>
+    <string name="passwordRequie">re password not match</string>
+    <string name="createpassword">create password</string>
+    <string name="password_include_4_number">Password include 4 number !</string>
+    <string name="enterRepassword">enter password</string>
+    <string name="repasswordNotMatch">re passsword not match</string>
+    <string name="chooseRingtone">Choose ringtone !</string>
+    <string-array name="ringtones">
+        <item>alert_sound1</item>
+        <item>alert_sound2</item>
+        <item>alert_sound3</item>
+    </string-array>
+    <string-array name="delayTime">
+        <item> 1s</item>
+        <item>3s</item>
+        <item>5s</item>
+    </string-array>
+    <string name="key_vibrate">VIBRATE</string>
+    <string name="key_timeDelay">DELAY</string>
+    <string name="key_ringtone">RINGTONE</string>
+    <string name="key_gumshoe">GUMSHOE</string>
+    <string name="key_charging">CHARGING</string>
+    <string name="key_touch">TOUCH</string>
+    <string name="key_lurcher">LURCHER</string>
+    <string name="key_rob">ROB</string>
+    <string name="key_sim">SIM</string>
 </resources>

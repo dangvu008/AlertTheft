@@ -1,17 +1,16 @@
 package com.dang.agi.alerttheft.view;
 
+import android.app.KeyguardManager;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.dang.agi.alerttheft.MainActivity;
 import com.dang.agi.alerttheft.R;
@@ -25,22 +24,57 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public static final int KEY_CLEAR = -1;
     public static final int KEY_FORGOT = -2;
     ArrayList<Integer> password;
+    Intent intent;
+    private KeyguardManager.KeyguardLock lock;
+    private PowerManager powerManager;
+    private PowerManager.WakeLock wake;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        //makeFullScreen();
         setContentView(R.layout.activity_login2);
-        Typeface xpressive = Typeface.createFromAsset(getAssets(), "fonts/XpressiveBold.ttf");
         addControls();
         password = new ArrayList<>();
-
+        intent = getIntent();
         addEvents();
 
     }
+    /*public void makeFullScreen(){
+        lock = ((KeyguardManager) getSystemService(Activity.KEYGUARD_SERVICE)).newKeyguardLock(KEYGUARD_SERVICE);
+        powerManager = ((PowerManager) getSystemService(Context.POWER_SERVICE));
+        wake = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "TAG");
+
+        lock.disableKeyguard();
+        wake.acquire();
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON);
+        if(Build.VERSION.SDK_INT < 19) { //View.SYSTEM_UI_FLAG_IMMERSIVE is only on API 19+
+            this.getWindow().getDecorView()
+                    .setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        } else {
+            this.getWindow().getDecorView()
+              .setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
+    }
+
+
+*/
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 
     private void addEvents() {
         btn0.setOnClickListener(this);
@@ -144,7 +178,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             int lastIndex = size-1;
             int lastNumber = (int) value.get(lastIndex);
             if (lastNumber == -2) {
-                Toast.makeText(Login.this, "chuyen", Toast.LENGTH_SHORT).show();
                 value.remove(lastIndex);
             }else if (lastNumber==-1){
                 value.remove(value.size()-1);
@@ -168,6 +201,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 password += arr.get(i);
             }
             if (arr.size() == 4) {
+                clearPassword();
                 if (Integer.parseInt(password)==1111) {
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
@@ -180,7 +214,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 imgs[i].setBackgroundResource(R.drawable.circle);
             }
         }
-
+        public void clearPassword(){
+            ImageView[] imgs = new ImageView[]{img4, img3, img2, img1};
+            imgs[0].setBackgroundResource(R.drawable.circle);
+            imgs[1].setBackgroundResource(R.drawable.circle);
+            imgs[2].setBackgroundResource(R.drawable.circle);
+            imgs[3].setBackgroundResource(R.drawable.circle);
+        }
         @Override
         protected ArrayList<Integer> doInBackground(Integer... integers) {
             int key = integers[0];
@@ -194,4 +234,5 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             super.onPostExecute(s);
         }
     }
+
 }

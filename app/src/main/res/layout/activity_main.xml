@@ -1,13 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dang.agi.alerttheft.MainActivity">
+    android:orientation="vertical"
+    tools:context="com.dang.agi.alerttheft.MainActivity"
+  >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        tools:ignore="UnusedAttribute" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        >
+
+        <Switch
+            android:text="Chế độ chống trộm khi đang sạc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/switchAlertCharging"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText"
+            android:enabled="true"
+            android:focusable="false"
+            android:checked="true" />
+
+        <Switch
+            android:text="Chế độ bảo phát hiện thiết bị chạm vào"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/switchAlerttouch"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText" />
+
+        <Switch
+            android:text="Chế độ phát  hiện móc túi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/switchAlertLurcher"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText" />
+
+        <Switch
+            android:text="Chế độ báo cướp giật"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/switchAlertRob"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText" />
+
+        <Switch
+            android:text="Chế độ báo cáo sim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/switchAlertSim"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText" />
+
+       <LinearLayout
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="10dp">
+           <TextView
+               android:text="Chuông báo !"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="14sp"
+               android:textStyle="normal|bold"
+               tools:ignore="HardcodedText" />
+           <Spinner
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/spinnerRingtone"
+               android:spinnerMode="dialog"
+               android:animateLayoutChanges="true"
+               android:layout_marginStart="5dp"
+               android:layout_marginLeft="5dp" />
+       </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <TextView
+                android:text="Độ trễ báo động!"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="normal|bold"
+                tools:ignore="HardcodedText" />
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerDelay"
+                android:spinnerMode="dialog"
+                android:animateLayoutChanges="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+        <CheckBox
+            android:text="Báo rung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxVibrate"
+            tools:ignore="HardcodedText"
+            android:layout_marginTop="10dp" />
+        <CheckBox
+            android:id="@+id/checkboxgumshoe"
+            android:text="Theo dõi khi bị mất !"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</LinearLayout>

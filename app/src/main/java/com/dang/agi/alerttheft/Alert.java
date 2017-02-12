@@ -1,6 +1,5 @@
 package com.dang.agi.alerttheft;
 
-import android.net.Uri;
 
 import java.io.Serializable;
 
@@ -9,16 +8,18 @@ import java.io.Serializable;
  */
 
 public class Alert implements Serializable {
-    private Uri uriRington;
+    private int ringtone;
     private boolean vibrator;
     private String location;
+    private int timeDelay;
+    private boolean gumshoe;
 
-    public Uri getUriRington() {
-        return uriRington;
+    public int getRingtone() {
+        return ringtone;
     }
 
-    public void setUriRington(Uri uriRington) {
-        this.uriRington = uriRington;
+    public void setRingtone(int ringtone) {
+        this.ringtone = ringtone;
     }
 
     public boolean isVibrator() {
@@ -35,5 +36,21 @@ public class Alert implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public int getTimeDelay() {
+        return timeDelay;
+    }
+
+    public void setTimeDelay(int timeDelay) {
+        this.timeDelay = timeDelay;
+    }
+
+    public boolean isGumshoe() {
+        return gumshoe;
+    }
+
+    public void setGumshoe(boolean gumshoe) {
+        this.gumshoe = gumshoe;
     }
 }
